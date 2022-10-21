@@ -16,14 +16,13 @@ def download(url):
 
 
 if __name__ == "__main__":
-    wiki_url = "https://finance.yahoo.com/quote/AAPL/history?p=AAPL&guccounter=1"
+    wiki_url = "https://en.wikipedia.org/wiki/List_of_Super_Bowl_champions"
     url_text = download(wiki_url)
 
     # Create a BeatifulSoup object
     soup = BeautifulSoup(url_text, features="lxml")
 
-    result_table = soup.find_all('table', class_="W(100%) M(0)")
-    print(result_table)
+    result_table = soup.find_all('table', class_="wikitable sortable")
     rows = result_table[0].find_all('tr')
     headers = rows[0].find_all('th')
     print(
